@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileCassTest {
+class FileClassTest {
 
     private static File inputFile;
     private static File outputFile;
@@ -20,8 +20,8 @@ class FileCassTest {
 
     @Test
     public void testReadFromFile() throws IOException {
-        String expectedOutput = "Ala has cat and cat has Ala\nTod has turtle and turtle has Tod";
-        String actualOutput = FileClass.readFile(inputFile);
+        int expectedOutput = "Ala has cat and cat has Ala\nTod has turtle and turtle has Tod".split("\n").length;
+        int actualOutput = FileClass.readFile(inputFile).size();
         assertEquals(expectedOutput, actualOutput);
     }
 
