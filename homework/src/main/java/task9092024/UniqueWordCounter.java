@@ -12,4 +12,8 @@ public class UniqueWordCounter {
             .flatMap(line -> Arrays.stream(line.split(" ")))
             .collect(Collectors.toList());
     }
+
+    public static List<String> sortWords(List<String> splitLinesOnWords) {
+        return splitLinesOnWords.stream().sorted().toList();
+    }
 }
