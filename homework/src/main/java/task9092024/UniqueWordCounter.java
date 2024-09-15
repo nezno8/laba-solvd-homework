@@ -6,11 +6,8 @@ import java.util.stream.Collectors;
 
 public class UniqueWordCounter {
 
-    public static List<String> splitLinesOnWords(List<String> linesFromFile) {
-    return linesFromFile
-            .stream()
-            .flatMap(line -> Arrays.stream(line.split(" ")))
-            .collect(Collectors.toList());
+    public static List<String> splitOnWords(String toSplit) {
+    return Arrays.stream(toSplit.split("\\s+")).toList();
     }
 
     public static List<String> sortWords(List<String> splitLinesOnWords) {
