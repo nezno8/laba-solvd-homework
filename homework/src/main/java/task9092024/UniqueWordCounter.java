@@ -2,6 +2,7 @@ package task9092024;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class UniqueWordCounter {
 
@@ -10,6 +11,6 @@ public class UniqueWordCounter {
     }
 
     public static List<String> sortWords(List<String> splitLinesOnWords) {
-        return splitLinesOnWords.stream().sorted().toList();
+        return splitLinesOnWords.stream().sorted((w1,w2) -> w1.compareToIgnoreCase(w2)).toList();
     }
 }
