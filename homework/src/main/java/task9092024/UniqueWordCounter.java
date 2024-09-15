@@ -2,7 +2,6 @@ package task9092024;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UniqueWordCounter {
 

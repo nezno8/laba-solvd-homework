@@ -13,52 +13,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class UniqueWordCounterTest {
 
-    private static List <String> readFileToTest;
-    private static List <String> splitLinesOnWordsFileToTest;
-
-    private static List <String> sortedWordsFileToTest;
-
-    @BeforeAll
-    public static void setUp() throws IOException {
-        File inputFile = new File("..\\homework\\src\\test\\resources\\test_input_testReadFromFile.txt");
-//        readFileToTest = FileClass.readFile(inputFile);
-//        splitLinesOnWordsFileToTest = UniqueWordCounter.splitLinesOnWords(readFileToTest);
-//        sortedWordsFileToTest = UniqueWordCounter.sortWords(splitLinesOnWordsFileToTest);
-    }
-
     @Test
     public void testSplitOnWords() {
         String toSplit = "Ala has cat and cat has Ala\nTod has turtle and turtle has Tod";
-        List<String> expectedOutput = List.of(
+        List<String> expected = List.of(
                 "Ala", "has", "cat", "and", "cat", "has", "Ala",
                 "Tod", "has", "turtle", "and", "turtle", "has", "Tod");
-        List<String> actualOutput = UniqueWordCounter.splitOnWords(toSplit);
-        assertEquals(expectedOutput, actualOutput);
+        List<String> actual = UniqueWordCounter.splitOnWords(toSplit);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testSortWords() {
-        List <String> sortedWordsList = Arrays
-                .stream("Ala has cat and cat has Ala\nTod has turtle and turtle has Tod"
-                                .replace("\n"," ")
-                                .split(" "))
-                .sorted()
-                .toList();
-        List<String> expectedOutput = sortedWordsList;
-        List<String> actualOutput = UniqueWordCounter.sortWords(splitLinesOnWordsFileToTest);
-        assertEquals(expectedOutput, actualOutput);
+        List<String> toBeSorted = List.of(
+                "Ala", "has", "cat", "and", "cat", "has", "Ala",
+                "Tod", "has", "turtle", "and", "turtle", "has", "Tod");
+        List <String> sortedWordsList = List.of(
+                "Ala", "Ala", "Tod", "Tod", "and", "and", "cat", "cat",
+                "has", "has", "has", "has", "turtle", "turtle");
+        List<String> actualOutput = UniqueWordCounter.sortWords(toBeSorted);
+        assertEquals(sortedWordsList, actualOutput);
     }
-
-//    @Test
-//    public void testSortWords() {
-//        List <String> sortedWordsList = Arrays
-//                .stream("Ala has cat and cat has Ala\nTod has turtle and turtle has Tod"
-//                        .replace("\n"," ")
-//                        .split(" "))
-//                .sorted()
-//                .toList();
-//        List<String> expectedOutput = sortedWordsList;
-//        List<String> actualOutput = UniqueWordCounter.sortWords(splitLinesOnWordsFileToTest);
-//        assertEquals(expectedOutput, actualOutput);
-//    }
 }
