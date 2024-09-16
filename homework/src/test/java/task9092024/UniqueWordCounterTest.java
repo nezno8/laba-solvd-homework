@@ -47,4 +47,26 @@ public class UniqueWordCounterTest {
         Map actual = UniqueWordCounter.countWordOccurrences(sortedWordsList);
         assertEquals(expectedWordToOccurrences, actual);
     }
+
+    @Test
+    public void testSortedWordOccurrences() {
+        Map<String, Integer> expectedWordToOccurrences = Map.of(
+                "Ala",2,
+                "and",2,
+                "cat",2,
+                "has",4,
+                "Tod",2,
+                "turtle",2);
+
+        Map<String, Integer> wordToOccurrences = Map.of(
+                "turtle",2,
+                "and",2,
+                "Ala",2,
+                "cat",2,
+                "Tod",2,
+                "has",4);
+
+        Map actual = UniqueWordCounter.sortedWordOccurrences(wordToOccurrences);
+        assertEquals(expectedWordToOccurrences, actual);
+    }
 }

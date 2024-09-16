@@ -2,9 +2,7 @@ package task9092024;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UniqueWordCounter {
 
@@ -22,5 +20,9 @@ public class UniqueWordCounter {
             wordToOccurrences.put(word, wordToOccurrences.getOrDefault(word, 0) + 1);
         }
         return wordToOccurrences;
+    }
+
+    public static Map sortedWordOccurrences(Map<String, Integer> wordToOccurrences) {
+        return new TreeMap<>(wordToOccurrences);
     }
 }
