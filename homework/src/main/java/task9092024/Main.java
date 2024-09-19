@@ -2,6 +2,8 @@ package task9092024;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class Main {
@@ -9,21 +11,14 @@ public class Main {
     static File outputFile = new File("..\\homework\\src\\test\\resources\\test_output_testWriteToFile.txt");
 
     public static void main(String[] args) throws IOException {
-        FileClass.writeToFile(
-                outputFile, UniqueWordCounter.writeOutSortedWordOccurrences(
-                        new TreeMap<>(
-                                UniqueWordCounter.sortedWordOccurrences(
-                                        UniqueWordCounter.countWordOccurrences(
-                                                UniqueWordCounter.sortWords(
-                                                        UniqueWordCounter.splitOnWordsAsList(
-                                                                FileClass.readFile(inputFile)
-                                                        )
-                                                )
-                                        )
-                                )
-                        )
-                )
-        );
+        String inputFileContent = FileClass.readFile(inputFile);
+
+        List<String> splitFileContent = UniqueWordCounter.splitOnWordsAsList(inputFileContent);
+        Map<String, Integer> countedWords = UniqueWordCounter.countWordOccurrences(splitFileContent);
+        Map<String, Integer> sortedWordsMap = UniqueWordCounter.sortedWordOccurrences(countedWords);
+        String outputFileContent = UniqueWordCounter.writeOutSortedWordOccurrences(sortedWordsMap);
+
+        FileClass.writeToFile(outputFile,outputFileContent);
     }
 
 }

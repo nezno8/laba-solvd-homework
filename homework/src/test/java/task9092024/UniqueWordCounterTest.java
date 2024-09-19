@@ -46,7 +46,7 @@ public class UniqueWordCounterTest {
                 "Ala", "Ala", "and", "and", "cat", "cat",
                 "has", "has", "has", "has", "Tod", "Tod", "turtle", "turtle");
 
-        Map actual = UniqueWordCounter.countWordOccurrences(sortedWordsList);
+        Map <String, Integer> actual = UniqueWordCounter.countWordOccurrences(sortedWordsList);
         assertEquals(expectedWordToOccurrences, actual);
     }
 
@@ -67,7 +67,7 @@ public class UniqueWordCounterTest {
                 "Tod",2,
                 "has",4);
 
-        List<String> actual = new ArrayList(UniqueWordCounter.sortedWordOccurrences(wordToOccurrences).keySet());
+        List<String> actual = new ArrayList<>(UniqueWordCounter.sortedWordOccurrences(wordToOccurrences).keySet());
         assertEquals(expectedKeyOrder, actual);
     }
 }
