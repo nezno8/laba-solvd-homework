@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,6 +24,7 @@ public class UniqueWordCounterTest {
         List<String> toBeSorted = List.of(
                 "Ala", "has", "cat", "and", "cat", "has", "Ala",
                 "Tod", "has", "turtle", "and", "turtle", "has", "Tod");
+
         List <String> sortedWordsList = List.of(
                 "Ala", "Ala", "and", "and", "cat", "cat",
                 "has", "has", "has", "has", "Tod", "Tod", "turtle", "turtle");
