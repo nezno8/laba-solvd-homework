@@ -2,8 +2,11 @@ package task9092024;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,14 +53,13 @@ public class UniqueWordCounterTest {
 
     @Test
     public void testSortedWordOccurrences() {
-        Map<String, Integer> expectedWordToOccurrences = Map.of(
-                "Ala",2,
-                "and",2,
-                "cat",2,
-                "has",4,
-                "Tod",2,
-                "turtle",2);
-
+        List<String> expectedKeyOrder = List.of(
+                "Ala",
+                "and",
+                "cat",
+                "has",
+                "Tod",
+                "turtle");
         Map<String, Integer> wordToOccurrences = Map.of(
                 "turtle",2,
                 "and",2,
@@ -66,7 +68,7 @@ public class UniqueWordCounterTest {
                 "Tod",2,
                 "has",4);
 
-        Map actual = UniqueWordCounter.sortedWordOccurrences(wordToOccurrences);
-        assertEquals(expectedWordToOccurrences, actual);
+        List<String> actual = new ArrayList(UniqueWordCounter.sortedWordOccurrences(wordToOccurrences).keySet());
+        assertEquals(expectedKeyOrder, actual);
     }
 }
