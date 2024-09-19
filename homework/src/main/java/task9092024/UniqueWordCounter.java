@@ -15,7 +15,7 @@ public class UniqueWordCounter {
     }
 
     public static Map countWordOccurrences(List<String> sortedWordsList) {
-        HashMap<String, Integer> wordToOccurrences = new HashMap<>();
+        Map <String, Integer> wordToOccurrences = new TreeMap<>();
         for (String word : sortedWordsList) {
             wordToOccurrences.put(word, wordToOccurrences.getOrDefault(word, 0) + 1);
         }
@@ -23,6 +23,8 @@ public class UniqueWordCounter {
     }
 
     public static Map sortedWordOccurrences(Map<String, Integer> wordToOccurrences) {
-        return new TreeMap<>(wordToOccurrences);
+        Map<String, Integer> sortedMapWordToOccurrences = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        sortedMapWordToOccurrences.putAll(wordToOccurrences);
+        return sortedMapWordToOccurrences;
     }
 }
