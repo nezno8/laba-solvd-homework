@@ -33,10 +33,12 @@ public class UniqueWordCounter {
     }
 
     public static String writeOutSortedWordOccurrences(Map<String, Integer> sortedWordToOccurrences) {
-        TreeMap<String, Integer> sortedWordToOccurrences2 = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         StringBuilder result = new StringBuilder();
-        sortedWordToOccurrences2.putAll(sortedWordToOccurrences);
-        sortedWordToOccurrences2.forEach((key, value) -> result.append(key).append(" : ").append(value).append(";\n"));
+        sortedWordToOccurrences.forEach((key, value) -> result
+                .append(key)
+                .append(" : ")
+                .append(value)
+                .append("\n"));
         return result.toString();
     }
 }
