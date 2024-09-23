@@ -2,56 +2,61 @@ package task9092024;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UniqueWordCounterTest {
 
     @Test
     public void testSplitOnWords() {
+        //Given:
         String toSplit = "Ala has cat and cat has Ala\nTod has turtle and turtle has Tod";
-        String [] splitWords = toSplit.split("\\s+");
+        String [] expected = {
+                "Ala", "has", "cat", "and", "cat", "has", "Ala",
+                "Tod", "has", "turtle", "and", "turtle", "has", "Tod"};
+        //When
         String [] actual = UniqueWordCounter.splitOnWords(toSplit);
-        assertArrayEquals(splitWords, actual);
+        //Then
+        assertArrayEquals(expected, actual);
     }
 
     @Test
     public void testSortWords() {
+        //Given
         List<String> toBeSorted = List.of(
                 "Ala", "has", "cat", "and", "cat", "has", "Ala",
                 "Tod", "has", "turtle", "and", "turtle", "has", "Tod");
-
-        List <String> sortedWordsList = List.of(
+        List <String> expected = List.of(
                 "Ala", "Ala", "and", "and", "cat", "cat",
                 "has", "has", "has", "has", "Tod", "Tod", "turtle", "turtle");
+        //When
         List<String> actual = UniqueWordCounter.sortWords(toBeSorted);
-        assertEquals(sortedWordsList, actual);
+        //Then
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testCountWordOccurrences() {
-        Map<String, Integer> expectedWordToOccurrences = Map.of(
+        //Given
+        List <String> sortedWordsList = List.of(
+                "Ala", "Ala", "and", "and", "cat", "cat",
+                "has", "has", "has", "has", "Tod", "Tod", "turtle", "turtle");
+        Map<String, Integer> expected = Map.of(
                 "Ala",2,
                 "and",2,
                 "cat",2,
                 "has",4,
                 "Tod",2,
                 "turtle",2);
-
-        List <String> sortedWordsList = List.of(
-                "Ala", "Ala", "and", "and", "cat", "cat",
-                "has", "has", "has", "has", "Tod", "Tod", "turtle", "turtle");
-
+        //When
         Map <String, Integer> actual = UniqueWordCounter.countWordOccurrences(sortedWordsList);
-        assertEquals(expectedWordToOccurrences, actual);
+        //Then
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testSortedWordOccurrences() {
+    public void testIsSortedWordOccurrencesAlphabetical() {
         List<String> expectedKeyOrder = List.of(
                 "Ala",
                 "and",

@@ -5,13 +5,12 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.*;
 
 public class UniqueWordCounter {
-
     public static String [] splitOnWords(String toSplit) {
         return StringUtils.split(toSplit);
     }
 
-    public static List<String> splitOnWordsAsList(String toSplit) {
-        return Arrays.stream(StringUtils.split(toSplit)).toList();
+    public static List<String> splitWordsAsList(String [] splitLinesOnWords) {
+        return Arrays.stream(splitLinesOnWords).toList();
     }
 
     public static List<String> sortWords(List<String> splitLinesOnWords) {
@@ -30,6 +29,12 @@ public class UniqueWordCounter {
         Map<String, Integer> sortedMapWordToOccurrences = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         sortedMapWordToOccurrences.putAll(wordToOccurrences);
         return sortedMapWordToOccurrences;
+    }
+
+    public static <T,K> boolean isSortedWordOccurrences(Map <T,K> map1, Map <T,K> map2) {
+        List<T> list1 = map1.keySet().stream().toList();
+        List<T> list2 = map2.keySet().stream().toList();
+        return list1.equals(list2);
     }
 
     public static String writeOutSortedWordOccurrences(Map<String, Integer> sortedWordToOccurrences) {
