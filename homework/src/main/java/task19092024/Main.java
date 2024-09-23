@@ -11,6 +11,9 @@ public class Main {
         thread1.start();
         thread2.start();
 
+        MyThread thread = new MyThread();
+        thread.start();
+
         Callable<String> callableTask = () -> {
             return "Hello from Callable!";
         };
