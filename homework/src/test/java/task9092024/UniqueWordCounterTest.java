@@ -1,6 +1,5 @@
 package task9092024;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
