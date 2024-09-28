@@ -7,10 +7,10 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UniqueWordCounterTest {
+class UniqueWordCounterTest {
 
     @Test
-    public void testSplitOnWords() {
+    void testSplitOnWords() {
         //Given:
         String toSplit = "Ala has cat and cat has Ala\nTod has turtle and turtle has Tod";
         String [] expected = {
@@ -23,7 +23,7 @@ public class UniqueWordCounterTest {
     }
 
     @Test
-    public void testSortWords() {
+    void testSortWords() {
         //Given
         List<String> toBeSorted = List.of(
                 "Ala", "has", "cat", "and", "cat", "has", "Ala",
@@ -38,7 +38,7 @@ public class UniqueWordCounterTest {
     }
 
     @Test
-    public void testCountWordOccurrences() {
+    void testCountWordOccurrences() {
         //Given
         List <String> sortedWordsList = List.of(
                 "Ala", "Ala", "and", "and", "cat", "cat",
@@ -57,7 +57,7 @@ public class UniqueWordCounterTest {
     }
 
     @Test
-    public void testIsSortedWordOccurrencesAlphabetical() {
+    void testIsSortedWordOccurrencesAlphabetical() {
         //Given
         Map<String, Integer> expected = new LinkedHashMap<>();
         expected.put("Ala",2);
