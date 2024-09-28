@@ -1,5 +1,6 @@
 package task9092024;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -57,22 +58,34 @@ public class UniqueWordCounterTest {
 
     @Test
     public void testIsSortedWordOccurrencesAlphabetical() {
-        List<String> expectedKeyOrder = List.of(
-                "Ala",
-                "and",
-                "cat",
-                "has",
-                "Tod",
-                "turtle");
-        Map<String, Integer> wordToOccurrences = Map.of(
+        //Given
+        Map<String, Integer> expected = new LinkedHashMap<>();
+        expected.put("Ala",2);
+        expected.put("and",2);
+        expected.put("cat",2);
+        expected.put("has",4);
+        expected.put("Tod",2);
+        expected.put("turtle",2);
+
+        Map<String, Integer> toBeSorted = Map.of(
                 "turtle",2,
                 "and",2,
                 "Ala",2,
                 "cat",2,
                 "Tod",2,
                 "has",4);
+        //When
+        Map<String, Integer> actual = UniqueWordCounter.sortedWordOccurrences(toBeSorted);
+        //Then
+        assertOrderedMapsEquals(expected, actual);
+    }
 
-        List<String> actual = new ArrayList<>(UniqueWordCounter.sortedWordOccurrences(wordToOccurrences).keySet());
-        assertEquals(expectedKeyOrder, actual);
+    public static <K,V> void assertOrderedMapsEquals(Map <K,V> map1, Map <K,V> map2) {
+        List<K> list1 = new ArrayList<>();
+        List<K> list2 = new ArrayList<>();
+        map1.forEach((k,v) -> list1.add(k));
+        map2.forEach((k,v) -> list2.add(k));
+        assertEquals(map1,map2);
+        assertEquals(list1,list2);
     }
 }
