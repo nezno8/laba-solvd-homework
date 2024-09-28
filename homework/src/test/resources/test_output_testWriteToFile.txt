@@ -1,0 +1,6 @@
+Ala : 2
+and : 2
+cat : 2
+has : 4
+Tod : 2
+turtle : 2
